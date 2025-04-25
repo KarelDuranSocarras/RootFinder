@@ -1,22 +1,22 @@
 ﻿using System;
 
 /// <summary>
-/// Clase que proporciona métodos para encontrar ceros (raíces) de funciones reales.
+/// Class that provides methods to find zeros (roots) of real functions.
 /// </summary>
 public class RootFinder
 {
     /// <summary>
-    /// Tolerancia por defecto para la convergencia de los métodos.
+    /// Default tolerance for the convergence of the methods.
     /// </summary>
     private const double DefaultTolerance = 1e-10;
 
     /// <summary>
-    /// Número máximo de iteraciones por defecto.
+    /// Default maximum number of iterations.
     /// </summary>
     private const int MaxIterations = 1000;
 
     /// <summary>
-    /// Enumeración de los métodos disponibles para encontrar raíces.
+    /// List of available methods to find roots.
     /// </summary>
     public enum RootFindingMethod
     {
@@ -25,15 +25,15 @@ public class RootFinder
     }
 
     /// <summary>
-    /// Encuentra un cero de la función utilizando el método especificado.
+    /// Find a zero of the function using the specified method.
     /// </summary>
-    /// <param name="function">Función cuyo cero se desea encontrar.</param>
-    /// <param name="method">Método a utilizar para encontrar el cero.</param>
-    /// <param name="initialGuess">Valor inicial o intervalo inicial dependiendo del método.</param>
-    /// <param name="derivative">Derivada de la función (solo requerida para Newton-Raphson).</param>
-    /// <param name="tolerance">Tolerancia para la convergencia.</param>
-    /// <param name="maxIterations">Número máximo de iteraciones permitidas.</param>
-    /// <returns>Una aproximación del cero de la función.</returns>
+    /// <param name="function">Function whose zero is to be found.</param>
+    /// <param name="method">Method to be used to find the zero.</param>
+    /// <param name="initialGuess">Initial value or initial interval depending on the method.</param>
+    /// <param name="derivative">Derivative of the function (only required for Newton-Raphson).</param>
+    /// <param name="tolerance">Tolerance for convergence.</param>
+    /// <param name="maxIterations">Maximum number of allowed iterations.</param>
+    /// <returns>An approximation of the zero of the function.</returns>
     public static double FindRoot(
         Func<double, double> function,
         RootFindingMethod method,
@@ -63,14 +63,14 @@ public class RootFinder
     }
 
     /// <summary>
-    /// Método de bisección para encontrar ceros de funciones.
+    /// Bisection method to find zeros of functions.
     /// </summary>
-    /// <param name="function">Función cuyo cero se desea encontrar.</param>
-    /// <param name="a">Extremo izquierdo del intervalo inicial.</param>
-    /// <param name="b">Extremo derecho del intervalo inicial.</param>
-    /// <param name="tolerance">Tolerancia para la convergencia.</param>
-    /// <param name="maxIterations">Número máximo de iteraciones permitidas.</param>
-    /// <returns>Una aproximación del cero de la función.</returns>
+    /// <param name="function">Function whose zero is to be found.</param>
+    /// <param name="a">Left endpoint of the initial interval.</param>
+    /// <param name="b">Right endpoint of the initial interval.</param>
+    /// <param name="tolerance">Tolerance for convergence.</param>
+    /// <param name="maxIterations">Maximum number of allowed iterations.</param>
+    /// <returns>An approximation of the zero of the function.</returns>
     private static double BisectionMethod(
         Func<double, double> function,
         double a,
@@ -78,7 +78,7 @@ public class RootFinder
         double tolerance,
         int maxIterations)
     {
-        // Verificar el teorema de Bolzano (condición necesaria para el método de bisección)
+        // Verify Bolzano's theorem (necessary condition for the bisection method)
         if (function(a) * function(b) >= 0)
         {
             throw new ArgumentException("La función debe tener signos opuestos en los extremos del intervalo.");
@@ -116,14 +116,14 @@ public class RootFinder
     }
 
     /// <summary>
-    /// Método de Newton-Raphson para encontrar ceros de funciones.
+    /// Newton-Raphson method for finding function zeros.
     /// </summary>
-    /// <param name="function">Función cuyo cero se desea encontrar.</param>
-    /// <param name="derivative">Derivada de la función.</param>
-    /// <param name="initialGuess">Aproximación inicial del cero.</param>
-    /// <param name="tolerance">Tolerancia para la convergencia.</param>
-    /// <param name="maxIterations">Número máximo de iteraciones permitidas.</param>
-    /// <returns>Una aproximación del cero de la función.</returns>
+    /// <param name="function">A function whose zero is to be found.</param>
+    /// <param name="derivative">Derived from function.</param>
+    /// <param name="initialGuess">Initial approach of zero.</param>
+    /// <param name="tolerance">Tolerance for convergence.</param>
+    /// <param name="maxIterations">Maximum number of iterations allowed.</param>
+    /// <returns>An approximation of the zero of the function.</returns>
     private static double NewtonRaphsonMethod(
         Func<double, double> function,
         Func<double, double> derivative,
